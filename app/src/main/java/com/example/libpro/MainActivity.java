@@ -8,69 +8,68 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity {
+    private Button home , category,setting, upload,logout ;
 
-        private DrawerLayout dl;
-        private ActionBarDrawerToggle t;
-        private NavigationView nv;
-        private UserInfo userInfo ;
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_main);
-            userInfo = new UserInfo(this);
+    private UserInfo userInfo;
 
-            // Get user name and show it to UI
-//        String username = userInfo.getUserusername();
-//        TextView welcometextView = findViewById(R.id.welcomeView);
-//        welcometextView.setText("Hello");
-
-            dl = findViewById(R.id.activity_main);
-            t = new ActionBarDrawerToggle(MainActivity.this, dl,R.string.open, R.string.close);
-
-            dl.addDrawerListener(t);
-            t.syncState();
-
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-            nv = findViewById(R.id.nv);
-            nv.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-                @Override
-                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                    int id = item.getItemId();
-
-                    if (id == R.id.homenav){
-                        Toast.makeText(MainActivity.this,"homenav",Toast.LENGTH_SHORT).show();
-                    }
-                    if (id == R.id.category){
-                        Intent intent = new Intent(MainActivity.this, category.class);
-                        startActivity(intent);
-                    }
-                    if (id == R.id.setting){
-                        Toast.makeText(MainActivity.this,"setting",Toast.LENGTH_SHORT).show();
-                    }
-                    if (id == R.id.logout){
-                        userInfo.saveUserInfo("","","");
-                        finish();
-                    }
-
-                    return true ;
-                }
-            });
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        userInfo = new UserInfo(this);
 
 
-        }
+        home =(Button) findViewById(R.id.home);
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent home = new Intent(MainActivity.this, Home.class);
+                startActivity(home);
+            }
+        });
 
-        @Override
-        public boolean onOptionsItemSelected(MenuItem item) {
 
-            if(t.onOptionsItemSelected(item))
-                return true;
+        category = (Button) findViewById(R.id.category);
+        category.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent category = new Intent(MainActivity.this, category.class);
+                startActivity(category);            }
+        });
+        setting = (Button) findViewById(R.id.setting);
+        setting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent setting = new Intent(MainActivity.this,Setting.class);
+                startActivity(setting);
+            }
+        });
+        upload=(Button) findViewById(R.id.upload);
+        upload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent upload = new Intent(MainActivity.this,Upload.class);
+                startActivity(upload);
+            }
+        });
 
-            return super.onOptionsItemSelected(item);
-        }
+        logout=(Button) findViewById(R.id.logout);
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                userInfo.saveUserInfo("","","");
+                finish();
+            }
+        });
+
+
+
     }
+}
