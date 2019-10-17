@@ -9,7 +9,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class rate_books extends AppCompatActivity {
-//hello
+
     RatingBar ratingbar;
     Button submit;
     @Override
