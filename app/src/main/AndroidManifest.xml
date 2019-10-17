@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Home"></activity>
+        <activity android:name=".display_books"></activity>
+        <activity android:name=".rate_books" />
+        <activity android:name=".Home" />
         <activity android:name=".Upload" />
         <activity android:name=".Setting" />
         <activity android:name=".category" />

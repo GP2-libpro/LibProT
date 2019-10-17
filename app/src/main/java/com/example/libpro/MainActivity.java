@@ -15,7 +15,7 @@ import android.widget.Toast;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity {
-    private Button home , category,setting, upload,logout ;
+    private Button home,category,setting,upload,logout ;
 
     private UserInfo userInfo;
 
